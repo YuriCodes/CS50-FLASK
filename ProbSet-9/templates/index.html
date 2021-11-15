@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Portfolio
+{% endblock %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<header class="alert alert-primary border text-center" role="alert">
+  {{ message }}
+</header>
+{% endif %}
+{% endwith %}
+
+{% block main %}
+
+<table class="table table-striped">
+ 
+  <thead>
+    <th>Symbol</th>
+    <th>Name</th>
+    <th>Shares</th>
+    <th>Price</th>
+    <th>Total</th>
+  </thead>
+  <tbody>
+    
+    {% for holding in holdings %}
+    <tr>
+      <td>{{holding["symbol"]}}</td>
+      <td>{{holding["name"]}}</td>
+      <td>{{holding["shares"]}}</td>
+      <td>{{holding["price"]}}</td>
+      <td>{{holding["total"]}}</td>
+    </tr>
+    {% endfor %}
+   <tr>
+    <td colspan="4" class="cashTable">TOTAL</td>
+    <td>{{grand_total}}</td>
+    </tr>
+    <tfoot>
+<td colspan="4" class="cashTable">CASH</td>
+      <td>{{cash}}</td>
+  </tfoot>
+  </tbody>
+</table>
+{% endblock %}

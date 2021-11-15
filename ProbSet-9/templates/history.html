@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<header class="alert alert-primary border text-center" role="alert">
+  {{ message }}
+</header>
+{% endif %}
+{% endwith %}
+
+{% block main %}
+
+<table class="table table-striped">
+ 
+  <thead>
+    <th>Symbol</th>
+    <th>Shares</th>
+    <th>Price</th>
+    <th>Transaction</th>
+  </thead>
+  <tbody>
+    
+    {% for transaction in transactions %}
+    <tr>
+      <td>{{transaction["symbol"]}}</td>
+      <td>{{transaction["shares"]}}</td>
+      <td>{{transaction["price"]}}</td>
+      <td>{{transaction["transacted"]}}</td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+{% endblock %}

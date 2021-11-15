@@ -41,3 +41,4 @@ def deregister():
     if id:
         db.execute("DELETE FROM birthdays WHERE id = ?", id)
     return redirect("/")
+

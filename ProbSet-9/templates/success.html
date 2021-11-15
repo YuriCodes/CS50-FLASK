@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Quote
+{% endblock %}
+
+{% block main %}
+<div>
+    <h1>You bought {{shares}} shares of {{name}} for {{price}} </h1>
+</div>
+{% endblock %}
+
+flash("Transaction succesful")
+            return render_template("success.html", shares = shares, name= symbol.upper(), price= price['price'])
